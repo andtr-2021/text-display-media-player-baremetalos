@@ -3,6 +3,10 @@
 #include "framebf.h"
 #include"../gcclib/stdbool.h"
 #include "mbox.h"
+#include "image.h"
+
+// array of name of the image
+char *image_name[5] = {"epd_bitmap_0001", "epd_bitmap_0002", "epd_bitmap_0003", "epd_bitmap_0004", "epd_bitmap_0005"};
 
 // Logic of strcmp from https://www.techiedelight.com/implement-strcmp-function-c/
 bool my_strcmp(const char *str1, const char *str2)
@@ -48,7 +52,33 @@ bool my_strcontain(const char *str, const char *substr)
     return false;
 }
 
+// strlen funciton
+int my_strlen(const char *str)
+{
+    int len = 0;
+    while (*str)
+    {
+        len++;
+        str++;
+    }
+    return len;
+}
 
+void play_video() {
+    
+    for (int i = 0; i < my_strlen(image_name); i++)
+    {
+        uart_puts("\nPlaying video: ");
+        unsigned long image = image_name[i];
+        // Draw the image
+        drawImage(0, 0, image, 640, 368);
+        uart_puts(image_name[i]);
+        // Wait for 33 miliseconds so that it is 30 fps
+        waitMiliSeconds(1000);      
+    
+    }
+
+}
 
 
 
@@ -59,5 +89,7 @@ void main()
 
     // Initialize frame buffer
     framebf_init();
+
+    play_video();
     
 }

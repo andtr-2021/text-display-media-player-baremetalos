@@ -7,3 +7,4 @@ void drawCircleARGB32(int x, int y, int r, unsigned int attr);
 void drawImage(int x, int y, unsigned long *imageData, int width, int height);
 void drawImageWithOffset(int x, int y, unsigned long *imageData, int width, int height, int yOffset);
 void clearFrameBuffer();
+void waitMiliSeconds(unsigned int miliSeconds);

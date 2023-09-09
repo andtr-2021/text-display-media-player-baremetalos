@@ -150,3 +150,18 @@ void drawImageWithOffset(int x, int y, unsigned long *imageData, int width, int 
     }
 }
 
+void waitMiliSeconds(unsigned int miliSeconds)
+{
+    register unsigned long f, t, r, expiredTime;
+
+    asm volatile ("mrs %0, cntfrq_el0" : "=r"(f));
+
+    asm volatile ("mrs %0, cntpct_el0" : "=r"(t));
+
+    expiredTime = t + ((f / 1000) * miliSeconds) / 1000;
+
+    do {
+        asm volatile ("mrs %0, cntpct_el0" : "=r"(r));
+    } while (r < expiredTime);
+}
+
