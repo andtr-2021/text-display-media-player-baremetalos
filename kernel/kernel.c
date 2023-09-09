@@ -4,6 +4,7 @@
 #include"../gcclib/stdbool.h"
 #include "mbox.h"
 #include "image.h"
+#include "font.h"
 
 // array of name of the image
 char *image_name[5] = {"epd_bitmap_0001", "epd_bitmap_0002", "epd_bitmap_0003", "epd_bitmap_0004", "epd_bitmap_0005"};
@@ -90,6 +91,7 @@ void main()
     // Initialize frame buffer
     framebf_init();
 
-    play_video();
+    // play_video();
     
+    // drawChar(10, 10, epd_bitmap_a, 0x00FFFFFF, 0x00000000);
 }
