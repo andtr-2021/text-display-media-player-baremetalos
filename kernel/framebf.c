@@ -232,7 +232,7 @@ void drawScaledDown(int x, int y, const unsigned long* bitmap, short originalWid
 
 void drawStrScaledDown(int x, int y, unsigned long *str[], int charHeight, int charWidth, unsigned int textColor, unsigned int bgColor, short scale) {
 
-    for (int i = 0; i < my_strlen(str); i++)
+    for (int i = 0; i < my_strlen(str) - 1; i++)
     {
         drawScaledDown(x + i * charWidth / scale, y, str[i], charHeight, charWidth, textColor, bgColor, scale);
         

@@ -95,13 +95,18 @@ void main()
 
     // .drawChar(10, 10, epd_bitmap_a, 100, 100);
 
-    drawScaledDown(10, 10, epd_bitmap_a, 100, 100, 0xFFFF0000, 0xFF0000FF, 2);
-    drawScaledDown(10, 50, epd_bitmap_a, 100, 100, 0xFFFF0000, 0xFF0000FF, 2);
-    drawScaledDown(60, 50, epd_bitmap_n, 100, 100, 0xFFFF0000, 0xFF0000FF, 2);
 
     unsigned long *studentOneName[2]  = {epd_bitmap_a, epd_bitmap_n};
-    drawStrScaledDown(300, 100, studentOneName, 100, 100, 0xFFFF0000, 0xFF0000FF, 2);
+    drawStrScaledDown(10, 10, studentOneName, 100, 100, 0xFFFF0000, 0xFF0000FF, 2);
 
+    unsigned long *studentTwoName[2]  = {epd_bitmap_n, epd_bitmap_a};
+    drawStrScaledDown(10, 60, studentTwoName, 100, 100, 0xFFFF0000, 0xFF0000FF, 2);
+
+    unsigned long *studentThreeName[2]  = {epd_bitmap_a, epd_bitmap_n};
+    drawStrScaledDown(10, 110, studentThreeName, 100, 100, 0xFFFF0000, 0xFF0000FF, 2);
+
+    unsigned long *studentFourName[2]  = {epd_bitmap_n, epd_bitmap_a};
+    drawStrScaledDown(10, 160, studentFourName, 100, 100, 0xFFFF0000, 0xFF0000FF, 2);
 
 
 }
