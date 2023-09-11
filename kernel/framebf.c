@@ -10,6 +10,7 @@ unsigned int width, height, pitch;
 /* Frame buffer address
  * (declare as pointer of unsigned char to access each byte) */
 unsigned char *fb;
+
 /**
  * Set screen resolution to 1024x768
  */
@@ -84,6 +85,7 @@ void framebf_init()
         uart_puts("Unable to get a frame buffer with provided setting\n");
     }
 }
+
 void drawPixelARGB32(int x, int y, unsigned int attr)
 {
     int offs = (y * pitch) + (COLOR_DEPTH / 8 * x);
@@ -137,6 +139,7 @@ void drawImage(int x, int y, unsigned long *imageData, int width, int height)
         }
     }
 }
+
 void drawImageWithOffset(int x, int y, unsigned long *imageData, int width, int height, int yOffset)
 {
     for (int i = 0; i < height; i++)
@@ -166,8 +169,74 @@ void waitMiliSeconds(unsigned int miliSeconds)
 }
 
 
+void drawCharWithColors(int x, int y, unsigned long *bitmap, int charHeight, int charWidth, unsigned int textColor, unsigned int bgColor)
+{
+    // Ensure the character is within the screen boundaries
+    if (x < 0 || x + charWidth >= width || y < 0 || y + charHeight >= height)
+    {
+        // Character is out of bounds, do not draw it
+        return;
+    }
+
+    // Loop through the character's pixel data and draw it
+    for (int i = 0; i < charHeight; i++)
+    {
+        for (int j = 0; j < charWidth; j++)
+        {
+            unsigned long pixel = bitmap[i * charWidth + j];
+            // Check if the pixel is transparent (white) or not
+            if (pixel != 0x00ffffff) {
+                // Pixel is not transparent, draw text color
+                drawPixelARGB32(x + j, y + i, textColor);
+            } else {
+                // Pixel is transparent, draw background color
+                drawPixelARGB32(x + j, y + i, bgColor);
+            }
+        }
+    }
+}
 
 
+void drawStr(int x, int y, unsigned long *str[], int charHeight, int charWidth, unsigned int textColor, unsigned int bgColor) {
+
+    for (int i = 0; i < my_strlen(str); i++)
+    {
+        drawCharWithColors(x + i * charWidth, y, str[i], charHeight, charWidth, textColor, bgColor);
+        
+    }
+    
+}
+
+void drawPixel(int x, int y, unsigned int attr) {
+    int offs = (y * pitch) + (COLOR_DEPTH / 8 * x);
+    *((unsigned int *)(fb + offs)) = attr;
+}
 
 
+void drawScaledDown(int x, int y, const unsigned long* bitmap, short originalWidth, short originalHeight,
+    unsigned long color, unsigned long bg, short scale) {
+    short scaledWidth = originalWidth / scale;
+    short scaledHeight = originalHeight / scale;
+    for (short i = 0; i < scaledHeight; i++) {
+        for (short j = 0; j < scaledWidth; j++) {
+            unsigned long pixel = bitmap[i * scale * originalWidth + j * scale];
+            if (pixel != 0x00ffffff) {
+                drawPixel(x + j, y + i, color);
+            }
+            else {
+                drawPixel(x + j, y + i, bg);
+            }
+        }
+    }
+}
+
+void drawStrScaledDown(int x, int y, unsigned long *str[], int charHeight, int charWidth, unsigned int textColor, unsigned int bgColor, short scale) {
+
+    for (int i = 0; i < my_strlen(str); i++)
+    {
+        drawScaledDown(x + i * charWidth / scale, y, str[i], charHeight, charWidth, textColor, bgColor, scale);
+        
+    }
+    
+}
 

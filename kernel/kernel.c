@@ -78,9 +78,7 @@ void play_video() {
         waitMiliSeconds(1000);      
     
     }
-
 }
-
 
 
 void main()
@@ -94,4 +92,21 @@ void main()
     // play_video();
     
     // drawChar(10, 10, epd_bitmap_a, 0x00FFFFFF, 0x00000000);
+
+    // .drawChar(10, 10, epd_bitmap_a, 100, 100);
+
+    // drawCharWithColors(10, 10, epd_bitmap_a, 100, 100,  0xFFFF0000, 0xFF0000FF);
+
+    drawScaledDown(200, 210, epd_bitmap_a, 100, 100, 0xFFFF0000, 0xFF0000FF, 2);
+
+    unsigned long *studentName1[2] = {epd_bitmap_a, epd_bitmap_n};
+    drawStrScaledDown(10, 10, studentName1, 100, 100, 0xFFFF0000, 0xFF0000FF, 2);
+
+    unsigned long *studentName2[2] = {epd_bitmap_n, epd_bitmap_a};
+    drawStr(10, 110, studentName2, 100, 100, 0xFFFF0000, 0xFF0000FF);
+    
+    
+
+
+
 }
