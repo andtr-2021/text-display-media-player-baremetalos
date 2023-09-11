@@ -95,12 +95,12 @@ void main()
 
     // .drawChar(10, 10, epd_bitmap_a, 100, 100);
 
-    // drawCharWithColors(10, 10, epd_bitmap_a, 100, 100,  0xFFFF0000, 0xFF0000FF);
+    drawScaledDown(10, 10, epd_bitmap_a, 100, 100, 0xFFFF0000, 0xFF0000FF, 2);
+    drawScaledDown(10, 50, epd_bitmap_a, 100, 100, 0xFFFF0000, 0xFF0000FF, 2);
+    drawScaledDown(60, 50, epd_bitmap_n, 100, 100, 0xFFFF0000, 0xFF0000FF, 2);
 
-    drawScaledDown(200, 210, epd_bitmap_a, 100, 100, 0xFFFF0000, 0xFF0000FF, 2);
-
-
-    
+    unsigned long *studentOneName[2]  = {epd_bitmap_a, epd_bitmap_n};
+    drawStrScaledDown(300, 100, studentOneName, 100, 100, 0xFFFF0000, 0xFF0000FF, 2);
 
 
 

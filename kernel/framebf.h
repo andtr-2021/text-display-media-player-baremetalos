@@ -10,6 +10,5 @@ void clearFrameBuffer();
 void waitMiliSeconds(unsigned int miliSeconds);
 void drawCharWithColors(int x, int y, unsigned long *bitmap, int charHeight, int charWidth, unsigned int textColor, unsigned int bgColor);
 void drawStr(int x, int y, unsigned long *str[], int charHeight, int charWidth, unsigned int textColor, unsigned int bgColor);
-void drawScaledDown(int x, int y, const unsigned long* bitmap, short originalWidth, short originalHeight,
-    unsigned long color, unsigned long bg, short scale);
+void drawScaledDown(int x, int y, const unsigned long* bitmap, short originalWidth, short originalHeight,unsigned long color, unsigned long bg, short scale);
 void drawStrScaledDown(int x, int y, unsigned long *str[], int charHeight, int charWidth, unsigned int textColor, unsigned int bgColor, short scale);
