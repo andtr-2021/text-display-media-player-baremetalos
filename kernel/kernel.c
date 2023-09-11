@@ -67,7 +67,7 @@ int my_strlen(const char *str)
 
 void play_video() {
     
-    for (int i = 0; i < my_strlen(image_name); i++)
+    for (int i = 0; i < my_strlen(image_name) - 1 ; i++)
     {
         uart_puts("\nPlaying video: ");
         unsigned long image = image_name[i];
