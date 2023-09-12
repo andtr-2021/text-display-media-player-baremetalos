@@ -3,7 +3,7 @@
 #include "framebf.h"
 #include"../gcclib/stdbool.h"
 #include "mbox.h"
-#include "image.h"
+#include "./video/image.h"
 #include "font.h"
 #include "colors.h"
 
