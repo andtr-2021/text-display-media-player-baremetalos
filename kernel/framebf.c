@@ -200,7 +200,8 @@ void drawCharWithColors(int x, int y, unsigned long *bitmap, int charHeight, int
 
 void drawStr(int x, int y, unsigned long *str[], int charHeight, int charWidth, unsigned int textColor, unsigned int bgColor) {
 
-    for (int i = 0; i < my_strlen(str) - 1; i++)
+    printf("arrLength for drawStr = %d\n", my_strlen_array(str));
+    for (int i = 0; i < my_strlen(str); i++)
     {
         drawCharWithColors(x + i * charWidth, y, str[i], charHeight, charWidth, textColor, bgColor);
         
@@ -235,7 +236,7 @@ int a = 0;
 
 void drawStrScaledDown(int x, int y, unsigned long *str[], int charHeight, int charWidth, unsigned int textColor, unsigned int bgColor, short scale) {
 
-    printf("a = %d\n", my_strlen_array(str));
+    printf("arr length = %d\n", my_strlen_array(str));
     for (int i = 0; i < my_strlen_array(str); i++)
     {   
         
