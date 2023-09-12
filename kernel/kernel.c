@@ -4,11 +4,24 @@
 #include"../gcclib/stdbool.h"
 #include "mbox.h"
 #include "./video/image.h"
+#include "./video/image1.h"
+#include "./video/image2.h"
+#include "./video/image3.h"
+#include "./video/image4.h"
+#include "./video/image5.h"
+#include "./video/image6.h"
+#include "./video/image7.h"
 #include "font.h"
 #include "colors.h"
 
-// array of name of the image
-char *image_name[5] = {"epd_bitmap_0001", "epd_bitmap_0002", "epd_bitmap_0003", "epd_bitmap_0004", "epd_bitmap_0005"};
+const unsigned long *videoArr[48] = {epd_bitmap_0001, epd_bitmap_0002, epd_bitmap_0003, epd_bitmap_0004, epd_bitmap_0005, epd_bitmap_0006, 
+epd_bitmap_0007, epd_bitmap_0008, epd_bitmap_0009, epd_bitmap_0010, epd_bitmap_0011, epd_bitmap_0012, epd_bitmap_0013,
+epd_bitmap_0014, epd_bitmap_0015, epd_bitmap_0016, epd_bitmap_0017, epd_bitmap_0018, epd_bitmap_0019, epd_bitmap_0020,
+epd_bitmap_0021, epd_bitmap_0022, epd_bitmap_0023, epd_bitmap_0024, epd_bitmap_0025, epd_bitmap_0026, epd_bitmap_0027,
+epd_bitmap_0028, epd_bitmap_0029, epd_bitmap_0030, epd_bitmap_0031, epd_bitmap_0032, epd_bitmap_0033, epd_bitmap_0034,
+epd_bitmap_0035, epd_bitmap_0036, epd_bitmap_0037, epd_bitmap_0038, epd_bitmap_0039, epd_bitmap_0040, epd_bitmap_0041,
+epd_bitmap_0042, epd_bitmap_0043, epd_bitmap_0044, epd_bitmap_0045, epd_bitmap_0046, epd_bitmap_0047, epd_bitmap_0048};
+
 
 // Logic of strcmp from https://www.techiedelight.com/implement-strcmp-function-c/
 bool my_strcmp(const char *str1, const char *str2)
@@ -80,15 +93,16 @@ int my_strlen_array(char *str[])
 
 void play_video() {
     
-    for (int i = 0; i < my_strlen(image_name) - 1 ; i++)
+    for (int i = 0; i < my_strlen_array(videoArr); i++)
     {
-        uart_puts("\nPlaying video: ");
-        unsigned long image = image_name[i];
-        // Draw the image
-        drawImage(0, 0, image, 640, 368);
-        uart_puts(image_name[i]);
-        // Wait for 33 miliseconds so that it is 30 fps
-        waitMiliSeconds(1000);      
+        
+        
+        drawImage(10, 10, videoArr[i], 640, 368);
+
+        waitMiliSeconds(42);  
+
+        clearFrameBufferWithHW(10, 10, 640, 368);
+    
     
     }
 }
@@ -143,15 +157,28 @@ void main()
     // Initialize frame buffer
     framebf_init();
 
-    // play_video();
+    play_video();
     
     // drawChar(10, 10, epd_bitmap_a, 0x00FFFFFF, 0x00000000);
 
     // .drawChar(10, 10, epd_bitmap_a, 100, 100);
 
 
-    displayTeamInfo();
+    // displayTeamInfo();
 
-    uart_puts("hellow4");
+    /*
+    uart_puts("Hello World!\n");
+    drawImage(10, 10, epd_bitmap_0001, 640, 368);
+    waitMiliSeconds(1000);
+    uart_puts("Hello World2!\n");
+    drawImage(10, 10, epd_bitmap_0048, 640, 368);*/
+    /*
+    drawImage(10, 10, videoArr[0], 640, 368);
+    uart_puts("image 1 is done");
+    waitMiliSeconds(42);
+    clearFrameBuffer();
+    uart_puts(" clear and wait is done");
+    drawImage(10, 10, videoArr[6], 640, 368);
+    uart_puts("image 7 is done");*/
 
 }

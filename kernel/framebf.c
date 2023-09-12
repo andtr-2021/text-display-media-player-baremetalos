@@ -129,6 +129,13 @@ void clearFrameBuffer()
             drawPixelARGB32(x, y, 0x00000000);
 }
 
+void clearFrameBufferWithHW(int x, int y, int width, int height)
+{
+    for (int i = 0; i < height; i++)
+        for (int j = 0; j < width; j++)
+            drawPixelARGB32(x + j, y + i, 0x00000000);
+}
+
 void drawImage(int x, int y, unsigned long *imageData, int width, int height)
 {
     for (int i = 0; i < height; i++)
