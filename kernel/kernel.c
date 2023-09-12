@@ -5,7 +5,7 @@
 #include "mbox.h"
 #include "image.h"
 #include "font.h"
-// #include "number.h"
+#include "colors.h"
 
 // array of name of the image
 char *image_name[5] = {"epd_bitmap_0001", "epd_bitmap_0002", "epd_bitmap_0003", "epd_bitmap_0004", "epd_bitmap_0005"};
@@ -104,7 +104,7 @@ void displayTeamInfo() {
 
     // GROUP 18
     unsigned long *groupEighteen[9]  = {epd_bitmap_g, epd_bitmap_r, epd_bitmap_o, epd_bitmap_u, epd_bitmap_p, epd_bitmap_space , epd_bitmap_num1, epd_bitmap_num8, epd_bitmap_colon};
-    drawStrScaledDown(10, 10, groupEighteen, 100, 100, 0xFFFF0000, 0xFF0000FF, 2);
+    drawStrScaledDown(10, 10, groupEighteen, 100, 100, COLOR_PINK, COLOR_WHITE, 2);
 
     freeMemory(groupEighteen);
 
