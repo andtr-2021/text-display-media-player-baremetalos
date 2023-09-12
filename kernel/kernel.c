@@ -65,6 +65,18 @@ int my_strlen(const char *str)
     return len;
 }
 
+// strlen function for array
+int my_strlen_array(char *str[])
+{
+    int len = 0;
+    while (*str)
+    {
+        len++;
+        str++;
+    }
+    return len;
+}
+
 void play_video() {
     
     for (int i = 0; i < my_strlen(image_name) - 1 ; i++)
@@ -78,6 +90,22 @@ void play_video() {
         waitMiliSeconds(1000);      
     
     }
+}
+
+void displayTeamInfo() {
+
+
+
+    unsigned long *studentTwoName[15]  = {epd_bitmap_m, epd_bitmap_a, epd_bitmap_i, epd_bitmap_space , epd_bitmap_c, epd_bitmap_h, epd_bitmap_i, epd_bitmap_e, epd_bitmap_u, epd_bitmap_space , epd_bitmap_t, epd_bitmap_h, epd_bitmap_u, epd_bitmap_y};
+    drawStrScaledDown(10, 50, studentTwoName, 100, 100, 0xFFFF0000, 0xFF0000FF, 4);
+   
+    unsigned long *studentThreeName[13]  = {epd_bitmap_p, epd_bitmap_a, epd_bitmap_r, epd_bitmap_k, epd_bitmap_space , epd_bitmap_a, epd_bitmap_n, epd_bitmap_h, epd_bitmap_space , epd_bitmap_k, epd_bitmap_i, epd_bitmap_e, epd_bitmap_t};
+    drawStrScaledDown(10, 100, studentThreeName, 100, 100, 0xFFFF0000, 0xFF0000FF, 4);
+
+    // DO TRUONG AN
+    unsigned long *studentFourName[12]  = {epd_bitmap_d, epd_bitmap_o, epd_bitmap_space , epd_bitmap_t, epd_bitmap_r, epd_bitmap_u, epd_bitmap_o, epd_bitmap_n, epd_bitmap_g, epd_bitmap_space ,epd_bitmap_a, epd_bitmap_n};
+    drawStrScaledDown(10, 150, studentFourName, 100, 100, 0xFFFF0000, 0xFF0000FF, 4);
+
 }
 
 
@@ -96,17 +124,8 @@ void main()
     // .drawChar(10, 10, epd_bitmap_a, 100, 100);
 
 
-    unsigned long *studentOneName[2]  = {epd_bitmap_a, epd_bitmap_n};
-    drawStrScaledDown(10, 10, studentOneName, 100, 100, 0xFFFF0000, 0xFF0000FF, 2);
+    displayTeamInfo();
 
-    unsigned long *studentTwoName[2]  = {epd_bitmap_n, epd_bitmap_a};
-    drawStrScaledDown(10, 60, studentTwoName, 100, 100, 0xFFFF0000, 0xFF0000FF, 2);
-
-    unsigned long *studentThreeName[2]  = {epd_bitmap_a, epd_bitmap_n};
-    drawStrScaledDown(10, 110, studentThreeName, 100, 100, 0xFFFF0000, 0xFF0000FF, 2);
-
-    unsigned long *studentFourName[2]  = {epd_bitmap_n, epd_bitmap_a};
-    drawStrScaledDown(10, 160, studentFourName, 100, 100, 0xFFFF0000, 0xFF0000FF, 2);
-
+    uart_puts("hellow4");
 
 }

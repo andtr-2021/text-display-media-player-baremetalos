@@ -1,6 +1,7 @@
 // ----------------------------------- framebf.c -------------------------------------
 #include "mbox.h"
 #include "../uart/uart1.h"
+#include "printf.h"
 // Use RGBA32 (32 bits for each pixel)
 #define COLOR_DEPTH 32
 // Pixel Order: BGR in memory order (little endian --> RGB in byte order)
@@ -213,7 +214,7 @@ void drawPixel(int x, int y, unsigned int attr) {
 }
 
 
-void drawScaledDown(int x, int y, const unsigned long* bitmap, short originalWidth, short originalHeight,
+void drawScaledDown(int x, int y, unsigned long* bitmap, short originalWidth, short originalHeight,
     unsigned long color, unsigned long bg, short scale) {
     short scaledWidth = originalWidth / scale;
     short scaledHeight = originalHeight / scale;
@@ -230,12 +231,16 @@ void drawScaledDown(int x, int y, const unsigned long* bitmap, short originalWid
     }
 }
 
+int a = 0;
+
 void drawStrScaledDown(int x, int y, unsigned long *str[], int charHeight, int charWidth, unsigned int textColor, unsigned int bgColor, short scale) {
 
-    for (int i = 0; i < my_strlen(str) - 1; i++)
-    {
-        drawScaledDown(x + i * charWidth / scale, y, str[i], charHeight, charWidth, textColor, bgColor, scale);
+    printf("a = %d\n", my_strlen_array(str));
+    for (int i = 0; i < my_strlen_array(str); i++)
+    {   
         
+        drawScaledDown(x + i * charWidth / scale, y, str[i], charHeight, charWidth, textColor, bgColor, scale);
+
     }
     
 }
