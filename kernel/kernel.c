@@ -102,6 +102,8 @@ void play_video() {
         waitMiliSeconds(42);  
 
         clearFrameBufferWithHW(10, 10, 640, 368);
+
+        // or clearFrameBuffer();
     
     
     }
