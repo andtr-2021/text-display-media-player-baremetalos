@@ -230,10 +230,10 @@ void drawScaledDown(int x, int y, unsigned long* bitmap, short originalWidth, sh
         for (short j = 0; j < scaledWidth; j++) {
             unsigned long pixel = bitmap[i * scale * originalWidth + j * scale];
             if (pixel != 0x00ffffff) {
-                drawPixel(x + j, y + i, color);
+                drawPixelARGB32(x + j, y + i, color);
             }
             else {
-                drawPixel(x + j, y + i, bg);
+                drawPixelARGB32(x + j, y + i, bg);
             }
         }
     }

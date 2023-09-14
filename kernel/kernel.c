@@ -99,7 +99,7 @@ void play_video() {
         
         drawImage(10, 10, videoArr[i], 640, 368);
 
-        waitMiliSeconds(42);  
+        waitMiliSeconds(1000);  
 
         clearFrameBufferWithHW(10, 10, 640, 368);
 
@@ -159,7 +159,7 @@ void main()
     // Initialize frame buffer
     framebf_init();
 
-    play_video();
+    // play_video();
     
     // drawChar(10, 10, epd_bitmap_a, 0x00FFFFFF, 0x00000000);
 
@@ -182,5 +182,11 @@ void main()
     uart_puts(" clear and wait is done");
     drawImage(10, 10, videoArr[6], 640, 368);
     uart_puts("image 7 is done");*/
+
+    while (1)
+    
+    {
+        play_video();
+    }
 
 }
