@@ -99,11 +99,11 @@ void play_video() {
         
         drawImage(10, 10, videoArr[i], 640, 368);
 
-        waitMiliSeconds(1000);  
+        waitMiliSeconds(5000);  
 
-        clearFrameBufferWithHW(10, 10, 640, 368);
+        // clearFrameBufferWithHW(10, 10, 640, 368);
 
-        // or clearFrameBuffer();
+        
     
     
     }
@@ -187,6 +187,7 @@ void main()
     
     {
         play_video();
+        clearFrameBuffer();
     }
 
 }
