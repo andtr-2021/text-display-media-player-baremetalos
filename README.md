@@ -7,4 +7,5 @@
 
 ## Video:
 - Simulate the RPI on QEMU and play the video:
+  
 ![image](https://github.com/andtr-2021/VideoFontOnBareMetalOS/assets/79509067/36583986-84f3-44f9-be12-dcaea3bf0142)
