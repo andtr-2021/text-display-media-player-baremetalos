@@ -10,6 +10,14 @@
 
 ![image](https://github.com/andtr-2021/VideoFontOnBareMetalOS/assets/79509067/ce864ff8-fdba-43dd-9cba-e5dd1337f5b8)
 
+### Character Images: 
+- Height: 100 pixels.
+- Width: 100 pixels.
+  
+![image](https://github.com/andtr-2021/text-display-media-player-baremetalos/assets/79509067/c44d8350-dcd5-452f-8726-bea5826992ce)
+
+![image](https://github.com/andtr-2021/text-display-media-player-baremetalos/assets/79509067/ef82bc39-e3d3-4e10-9327-3d315fa86f9f)
+
 ## Video:
 - **Infor**: 3-second 24fps video - display 48 frames in 3 seconds. 
 - Simulate the RPI on QEMU and play the video.
