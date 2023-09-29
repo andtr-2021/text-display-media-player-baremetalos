@@ -21,5 +21,7 @@
 ## Video:
 - **Infor**: 3-second 24fps video - display 48 frames in 3 seconds. 
 - Simulate the RPI on QEMU and play the video.
-  
 ![image](https://github.com/andtr-2021/VideoFontOnBareMetalOS/assets/79509067/36583986-84f3-44f9-be12-dcaea3bf0142)
+
+https://github.com/andtr-2021/text-display-media-player-baremetalos/assets/79509067/eadb59d1-207b-4e4f-bf0a-c87b96311d6f
+
