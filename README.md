@@ -1,4 +1,4 @@
-# Text Display and Video Player for BareMetalOS on Raspberry Pi 3/4:
+# Text Display and Video Player for BareMetalOS on RPI 3/4:
 
 ## Font:
 - **Font Name**: Roboto Serif
